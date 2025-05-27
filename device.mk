@@ -1057,3 +1057,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     KIOSK_Demo \
     WifiOverlay
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.bt.service.down=true
