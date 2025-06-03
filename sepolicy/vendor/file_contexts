@@ -263,5 +263,8 @@
 /vendor/bin/hw/vendor\.hardkernel\.hardware\.odroidthings@1\.0-service    u:object_r:odroid_thing_exec:s0
 /vendor/lib(64)?/vendor\.hardkernel\.hardware\.odroidthings@1\.0\.so    u:object_r:same_process_hal_file:s0
 
+#rtc wakeup
+/vendor/bin/hw/vendor\.hardkernel\.hardware\.rtc-service    u:object_r:rtc_default_exec:s0
+
 #UPS
 /vendor/bin/check_ups.sh    u:object_r:check_ups_exec:s0

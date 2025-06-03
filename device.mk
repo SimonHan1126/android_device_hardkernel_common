@@ -1045,6 +1045,12 @@ PRODUCT_PACKAGES += \
     vendor.hardkernel.hardware.odroidthings@1.0-service
 
 PRODUCT_PACKAGES += \
+    Rtc \
+    vendor.hardkernel.hardware.rtc \
+    vendor.hardkernel.hardware.rtc.xml \
+    vendor.hardkernel.hardware.rtc-service.default
+
+PRODUCT_PACKAGES += \
     mkfs.exfat \
     fsck.exfat
 
