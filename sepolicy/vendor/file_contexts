@@ -265,6 +265,7 @@
 
 #rtc wakeup
 /vendor/bin/hw/vendor\.hardkernel\.hardware\.rtc-service    u:object_r:rtc_default_exec:s0
+/vendor/bin/hw/vendor\.hardkernel\.hardware\.rtc-service\.default    u:object_r:rtc_default_exec:s0
 
 #UPS
 /vendor/bin/check_ups.sh    u:object_r:check_ups_exec:s0
