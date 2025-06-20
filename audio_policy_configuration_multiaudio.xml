@@ -101,7 +101,7 @@
                 </devicePort>
             </devicePorts>
             <routes>
-                <route type="mix" sink="HDMI Out"
+                <route type="mix" sink="Speaker"
                        sources="hdmi_default_output,hdmi output"/>
                 <route type="mix" sink="hdmi input"
                        sources="HDMIIn"/>
