@@ -13,3 +13,4 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/hardkernel/common/manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/hardkernel/common/manifests/frameworks/rockchip.hardware.hdmi@1.0-service.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/hardkernel/common/manifests/frameworks/vendor.hardkernel.hardware.odroidthings@1.0-service.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/hardkernel/common/manifests/frameworks/vendor.hardkernel.hardware.rtc-service.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/hardkernel/common/manifests/frameworks/sim7600gh_compatibility_matrix.xml

@@ -342,7 +342,7 @@ BOARD_BLUETOOTH_LE_SUPPORT ?= true
 BOARD_WIFI_SUPPORT ?= true
 
 #for rk 4g modem
-BOARD_HAS_RK_4G_MODEM ?= false
+BOARD_HAS_RK_4G_MODEM ?= true
 
 #for rk DLNA
 PRODUCT_HAVE_DLNA ?= false
