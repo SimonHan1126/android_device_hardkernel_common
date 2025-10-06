@@ -1,0 +1,8 @@
+# service logcat-prune-loop /system/bin/sh /system/etc/prune_loop.sh
+#    class late_start
+#    user log
+#    group log
+
+# on property:sys.boot_completed=1
+#    start logcat-prune-loop
+#

@@ -6,25 +6,30 @@ echo "  Init default values"
 
 test -n "$$heartbeat" || setenv heartbeat 1
 test -n "$$lcd_density" || setenv lcd_density 240
-setenv overlays ""
+setenv overlays "i2c0 spi0 uart0 display_vu8s"
 setenv overlays_resize 16384
+setenv user_def_args "orientation=3 prevent_sleep=true"
 
-echo "  Boot sequence"
+echo "  Boot sequence 1111"
 if test "$${devnum}" = 0 ; then
+    echo "  Boot sequence 2222"
 	setenv media emmc
 	setenv boot_device ${_emmc_boot_device}
 else
+    echo "  Boot sequence 3333"
 	setenv media sd
 	setenv boot_device ${_sd_boot_device}
 fi
-
+echo "  Boot sequence 44444"
 if test $${devtype} = nvme; then
+    echo "  Boot sequence 5555"
 	setenv media $${devtype}
 	setenv boot_device 3c0800000.pcie
 fi
-
+echo "  Boot sequence 6666"
 if bcb load $$devnum misc; then
 	# valid BCB found
+	echo "  Boot sequence 7777"
 	if bcb test command = bootonce-bootloader; then
 		# Bootloader boot
 		echo "  bootloader boot"
@@ -55,6 +60,7 @@ ${_load_dtb}
 
 	echo "  Set booting arguments"
 	setenv secure_args "androidboot.selinux=permissive androidboot.veritymode=enforcing androidboot.verifiedbootstate=orange"
+
 	setenv io_args "androidboot.baseband=N/A androidboot.wificountrycode=${_wifi_country} console=ttyFIQ0 androidboot.console=ttyFIQ0 pci=nomsi"
 	if test $$board = "odroid-m1"; then
 		setenv mtd_args "mtdparts=${_mtd}"
@@ -63,9 +69,9 @@ ${_load_dtb}
 	fi
 
 	setenv android_args "androidboot.lcd_density=$$lcd_density"
-
+    echo "  android_args $${android_args}"
 	setenv bootargs "storagemedia=$$media androidboot.storagemedia=$$media androidboot.mode=normal androidboot.dtb_idx=0 androidboot.slot_suffix= androidboot.boot_devices=$$boot_device androidboot.hardware=odroid loop.max_part=7 buildvariant=${_variant} $${secure_args} $${io_args} $${init_args} $${mtd_args} $${android_args} $${user_def_args} vendor.serialno=$${serial#} quiet"
-
+    echo "  bootargs $${bootargs}"
 	bootm 0x20000000
 else
 	echo Media corrupted.

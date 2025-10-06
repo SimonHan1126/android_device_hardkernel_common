@@ -1,7 +1,0 @@
-type phh-su, domain, coredomain;
-type phh-su_exec, exec_type, system_file_type, file_type;
-
-init_daemon_domain(phh-su);
-
-allow phh-su phh-su_exec:file { read getattr map execute open entrypoint };
-allow phh-su phh-su_exec:file { execute entrypoint };

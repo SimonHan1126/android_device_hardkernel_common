@@ -42,7 +42,7 @@ ifeq ($(strip $(BUILD_WITH_GOOGLE_MARKET)), true)
     endif
     # Enforce privapp-permissions whitelist only for user build.
     PRODUCT_PROPERTY_OVERRIDES += \
-      ro.control_privapp_permissions=enforce
+      ro.control_privapp_permissions=log
   endif
   $(warning Please set client id with your own MADA ID!)
   TARGET_SYSTEM_PROP += vendor/rockchip/common/gms/gms.prop
