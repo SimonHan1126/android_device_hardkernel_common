@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exceptions>
+    <exception package="com.tepari.macrostock.macrostock">
+        <permission name="android.permission.ACCESS_FINE_LOCATION"  fixed="true"/>
+        <permission name="android.permission.ACCESS_COARSE_LOCATION" fixed="true"/>
+        <permission name="android.permission.NEARBY_WIFI_DEVICES"    fixed="true"/>
+        <permission name="android.permission.BLUETOOTH_SCAN"         fixed="true"/>
+        <permission name="android.permission.BLUETOOTH_CONNECT"      fixed="true"/>
+        <permission name="android.permission.BLUETOOTH_ADVERTISE"    fixed="true"/>
+        <permission name="android.permission.ACCESS_BACKGROUND_LOCATION" fixed="true"/>
+        <permission name="android.permission.BLUETOOTH"       fixed="true"/>
+        <permission name="android.permission.BLUETOOTH_ADMIN" fixed="true"/>
+    </exception>
+</exceptions>
