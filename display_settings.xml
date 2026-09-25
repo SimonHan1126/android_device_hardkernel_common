@@ -6,4 +6,9 @@
   shouldShowSystemDecors="false"
   shouldShowIme="true"
   forcedDensity="240"	/>
+<display
+    name="local:0"
+    ignoreOrientationRequest="true"
+    userRotationMode="1"
+    userRotation="0" />
 </display-settings>
