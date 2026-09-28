@@ -10,6 +10,7 @@ build_boot_scr := $(PRODUCT_OUT)/boot.scr
 boot_logo_bmp := $(PRODUCT_OUT)/boot-logo.bmp.gz
 
 dtb_target_file := `echo $(PRODUCT_KERNEL_DTS) | sed s/"-android"//g`
+target_board := $(if $(HK_TARGET_BOARD),$(HK_TARGET_BOARD),$(PRODUCT_MODEL))
 
 target_partition_size := 19456
 
@@ -22,8 +23,8 @@ $(build_fat_img) : $(build_boot_scr) $(boot_logo_bmp) $(PRODUCT_DTB_TARGET)
 	$(MKFS_FAT) -F16 -n VFAT $(build_fat_img)
 	mkdir -p $(source_dir)/rockchip
 	cp  $(PRODUCT_DTB_TARGET) $(source_dir)/rockchip/$(dtb_target_file).dtb
-	mkdir -p $(source_dir)/rockchip/overlays/$(PRODUCT_MODEL)
-	cp $(PRODUCT_DTBO_TARGET) $(source_dir)/rockchip/overlays/$(PRODUCT_MODEL)
+	mkdir -p $(source_dir)/rockchip/overlays/$(target_board)
+	cp $(PRODUCT_DTBO_TARGET) $(source_dir)/rockchip/overlays/$(target_board)
 	$(AOSP_FAT16COPY) $(build_fat_img) \
 		$(build_boot_scr) \
 		$(boot_logo_bmp) \
