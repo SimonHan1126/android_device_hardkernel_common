@@ -1,0 +1,28 @@
+# Provision MacrostockStarter as device owner once the system is up. See
+# device/hardkernel/common/bin/macrostock_device_owner.sh for why this cannot be done
+# from inside the app.
+#
+# This is an exec_background rather than a service on purpose. A `service` line makes
+# init compute a domain transition from u:r:init:s0 based on the executable's label, and
+# /system/bin/sh is shell_exec, for which no such transition is defined. Init then
+# refuses to start it with:
+#
+#   Could not ctl.start for 'macrostock_device_owner': File /system/bin/sh (labeled
+#   "u:object_r:shell_exec:s0") has incorrect label or no domain transition from
+#   u:r:init:s0 to another SELinux domain defined.
+#
+# and that check is enforced even when SELinux is permissive. The alternatives were to
+# define a dedicated domain (see move-widevine-data-sh in
+# device/hardkernel/common/sepolicy/private for that pattern) or to name the target
+# domain explicitly, as here.
+#
+# u:r:shell:s0 / uid shell is deliberate and needs no new policy:
+#   - system/sepolicy/private/init.te has domain_trans(init, shell_exec, shell), so the
+#     transition is already permitted.
+#   - the shell domain is already provisioned to run dumpsys and dpm and to make binder
+#     calls to system_server - it is what `adb shell dpm set-device-owner` runs as.
+#   - DevicePolicyManagerService.isAdb() is isShellUid(caller) || isRootUid(caller), so
+#     uid shell takes the same permissive branch that the manual adb command does.
+# This grants no more privilege than the adb step it replaces.
+on property:sys.boot_completed=1
+    exec_background u:r:shell:s0 shell shell -- /system/bin/sh /system_ext/bin/macrostock_device_owner.sh
